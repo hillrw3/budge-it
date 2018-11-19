@@ -21,6 +21,14 @@ export class AppComponent implements OnInit {
     })
   }
 
+  get creditTotal(): number {
+    return this.credits.reduce((prev, credit) => { return prev += credit.get('amount').value}, 0)
+  }
+
+  get debitTotal(): number {
+    return this.debits.reduce((prev, debit) => { return prev += debit.get('amount').value}, 0)
+  }
+
   private buildForm(lineItems: LineItem[]) {
     this.credits = lineItems
       .filter(lineItem => !lineItem.debit)
