@@ -1,0 +1,21 @@
+.content {
+  padding: 1rem;
+  width: 50%;
+  margin-left: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 100%;
+  justify-content: center;
+
+  > * {
+    flex: 1 0 100%;
+  }
+}
+
+.header {
+  text-align: center;
+}
+
+section {
+  margin-bottom: 1rem;
+}
