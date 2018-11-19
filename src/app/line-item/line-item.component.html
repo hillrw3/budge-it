@@ -1,0 +1,9 @@
+<form class="line-item" [formGroup]="form">
+  <mat-form-field class="title" [floatLabel]="'never'">
+    <input matInput placeholder="title" type="text" formControlName="title">
+  </mat-form-field>
+  <mat-form-field class="amount" [floatLabel]="'never'">
+    <span matPrefix>$</span>
+    <input matInput placeholder="amount" type="text" formControlName="amount">
+  </mat-form-field>
+</form>

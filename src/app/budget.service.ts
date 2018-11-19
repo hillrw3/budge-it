@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {LineItem} from './line-item'
+import {LineItem} from './line-item/line-item'
 import {Observable, of} from 'rxjs'
 
 @Injectable({

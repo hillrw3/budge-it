@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {BudgetService} from './budget.service'
-import {LineItem} from './line-item'
+import {LineItem} from './line-item/line-item'
 
 @Component({
   selector: 'app-root',

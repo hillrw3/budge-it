@@ -5,14 +5,7 @@
         <mat-card-title>Income & Savings</mat-card-title>
         <mat-card-subtitle>Any monthly paychecks and savings bookmarked for this month</mat-card-subtitle>
         <mat-card-content>
-          <form *ngFor="let credit of credits" [formGroup]="credit">
-            <mat-form-field class="title" [floatLabel]="'never'">
-              <input matInput placeholder="title" type="text" formControlName="title">
-            </mat-form-field>
-            <mat-form-field class="amount" [floatLabel]="'never'">
-              <input matInput placeholder="amount" type="text" formControlName="amount">
-            </mat-form-field>
-          </form>
+            <line-item *ngFor="let credit of credits" [form]="credit"></line-item>
         </mat-card-content>
       </mat-card>
     </section>
@@ -20,15 +13,9 @@
     <section class="debits">
       <mat-card>
         <mat-card-title>Bills & Budgets</mat-card-title>
+        <mat-card-subtitle>Any bills (e.g. rent, utilities) and monthly budgets (e.g. eating out, coffee)</mat-card-subtitle>
         <mat-card-content>
-          <form *ngFor="let debit of debits" [formGroup]="debit">
-            <mat-form-field class="title" [floatLabel]="'never'">
-              <input matInput placeholder="title" type="text" formControlName="title">
-            </mat-form-field>
-            <mat-form-field class="amount" [floatLabel]="'never'">
-              <input matInput placeholder="amount" type="text" formControlName="amount">
-            </mat-form-field>
-          </form>
+          <line-item *ngFor="let debit of debits" [form]="debit"></line-item>
         </mat-card-content>
       </mat-card>
     </section>
