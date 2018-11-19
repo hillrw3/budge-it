@@ -9,8 +9,8 @@ import {LineItem} from './line-item/line-item'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public credits: FormGroup[] = []
-  public debits: FormGroup[] = []
+  public revenueStreams: FormGroup[] = []
+  public expenses: FormGroup[] = []
 
   constructor(private fb: FormBuilder, private budgetService: BudgetService) {
   }
@@ -21,20 +21,22 @@ export class AppComponent implements OnInit {
     })
   }
 
-  get creditTotal(): number {
-    return this.credits.reduce((prev, credit) => { return prev += credit.get('amount').value}, 0)
+  get revenueStreamTotal(): number {
+    return this.totalLineItemAmounts(this.revenueStreams)
   }
 
-  get debitTotal(): number {
-    return this.debits.reduce((prev, debit) => { return prev += debit.get('amount').value}, 0)
+  get expenseTotal(): number {
+    return this.totalLineItemAmounts(this.expenses)
   }
+
+  get netIncome() { return this.revenueStreamTotal - this.expenseTotal }
 
   private buildForm(lineItems: LineItem[]) {
-    this.credits = lineItems
-      .filter(lineItem => !lineItem.debit)
+    this.revenueStreams = lineItems
+      .filter(lineItem => !lineItem.expense)
       .map(lineItem => this.lineItemToFormGroup(lineItem))
-    this.debits = lineItems
-      .filter(lineItem => lineItem.debit)
+    this.expenses = lineItems
+      .filter(lineItem => lineItem.expense)
       .map(lineItem => this.lineItemToFormGroup(lineItem))
   }
 
@@ -43,7 +45,11 @@ export class AppComponent implements OnInit {
       id: lineItem.id,
       title: lineItem.title,
       amount: lineItem.amount,
-      debit: lineItem.debit
+      expense: lineItem.expense
     })
+  }
+
+  private totalLineItemAmounts(lineItems: FormGroup[]) {
+    return lineItems.reduce((prev, item) => { return prev += item.get('amount').value}, 0)
   }
 }

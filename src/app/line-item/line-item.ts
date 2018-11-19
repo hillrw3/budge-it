@@ -3,10 +3,10 @@ export class LineItem {
     public id: number,
     public title: string,
     public amount: number,
-    public debit: boolean
+    public expense: boolean
   ) {}
 
   static fromJson(json: Partial<LineItem> = {}): LineItem {
-    return new LineItem(json['id'], json['title'], json['amount'], json['debit'])
+    return new LineItem(json['id'], json['title'], json['amount'], json['expense'])
   }
 }

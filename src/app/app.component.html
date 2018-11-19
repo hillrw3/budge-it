@@ -1,31 +1,31 @@
 <div class="content">
   <h2 class="header">Monthly Budget</h2>
-  <section class="credits">
+  <section class="revenue-streams">
     <mat-card>
-      <mat-card-title>Income & Savings</mat-card-title>
-      <mat-card-subtitle>Any monthly paychecks and savings bookmarked for this month</mat-card-subtitle>
+      <mat-card-title>Revenue Streams</mat-card-title>
+      <mat-card-subtitle>Any paychecks and savings bookmarked for this month</mat-card-subtitle>
       <mat-card-content>
-        <line-item *ngFor="let credit of credits" [form]="credit"></line-item>
-        <h3 class="total">Total: {{creditTotal | currency}}</h3>
+        <line-item *ngFor="let revenueStream of revenueStreams" [form]="revenueStream"></line-item>
+        <h3 class="total">Total: {{revenueStreamTotal | currency}}</h3>
       </mat-card-content>
     </mat-card>
   </section>
 
-  <section class="debits">
+  <section class="expenses">
     <mat-card>
       <mat-card-title>Expenses</mat-card-title>
       <mat-card-subtitle>Any bills (e.g. rent, utilities) and monthly budgets (e.g. eating out, coffee)
       </mat-card-subtitle>
       <mat-card-content>
-        <line-item *ngFor="let debit of debits" [form]="debit"></line-item>
-        <h3 class="total">Total: {{debitTotal | currency}}</h3>
+        <line-item *ngFor="let expense of expenses" [form]="expense"></line-item>
+        <h3 class="total">Total: {{expenseTotal | currency}}</h3>
       </mat-card-content>
     </mat-card>
   </section>
   <section>
     <mat-card>
-      <mat-card-title>Net Income: {{creditTotal - debitTotal | currency}}</mat-card-title>
-      <mat-card-subtitle>Income - Expenses</mat-card-subtitle>
+      <mat-card-title>Net Income: {{revenueStreamTotal - expenseTotal | currency}}</mat-card-title>
+      <mat-card-subtitle>Revenue - Expenses = Net Income</mat-card-subtitle>
     </mat-card>
   </section>
 </div>
