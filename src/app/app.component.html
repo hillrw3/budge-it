@@ -14,7 +14,7 @@
   <section class="expenses">
     <mat-card>
       <mat-card-title>Expenses</mat-card-title>
-      <mat-card-subtitle>Any bills (e.g. rent, utilities) and monthly budgets (e.g. eating out, coffee)
+      <mat-card-subtitle>Any bills (e.g. rent, utilities) and monthly budgets (e.g. eating out, groceries)
       </mat-card-subtitle>
       <mat-card-content>
         <line-item *ngFor="let expense of expenses" [form]="expense"></line-item>

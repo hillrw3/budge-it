@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {BudgetService} from './budget.service'
 import {LineItem} from './line-item/line-item'
+import {Budget} from './budget'
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.budgetService.fetchMonthlyBudget().subscribe(lineItems => {
-      this.buildForm(lineItems)
+    this.budgetService.fetchMonthlyBudget().subscribe(budget => {
+      this.buildForm(budget)
     })
   }
 
@@ -31,13 +32,9 @@ export class AppComponent implements OnInit {
 
   get netIncome() { return this.revenueStreamTotal - this.expenseTotal }
 
-  private buildForm(lineItems: LineItem[]) {
-    this.revenueStreams = lineItems
-      .filter(lineItem => !lineItem.expense)
-      .map(lineItem => this.lineItemToFormGroup(lineItem))
-    this.expenses = lineItems
-      .filter(lineItem => lineItem.expense)
-      .map(lineItem => this.lineItemToFormGroup(lineItem))
+  private buildForm(budget: Budget) {
+    this.revenueStreams = budget.revenueStreams.map(lineItem => this.lineItemToFormGroup(lineItem))
+    this.expenses = budget.expenses.map(lineItem => this.lineItemToFormGroup(lineItem))
   }
 
   private lineItemToFormGroup(lineItem: LineItem): FormGroup {
