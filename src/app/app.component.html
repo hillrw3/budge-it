@@ -6,6 +6,7 @@
       <mat-card-subtitle>Any paychecks and savings bookmarked for this month</mat-card-subtitle>
       <mat-card-content>
         <line-item *ngFor="let revenueStream of revenueStreams" [form]="revenueStream"></line-item>
+        <line-item [disabled]="true" (click)="addRevenueStream()"></line-item>
         <h3 class="total">Total: {{revenueStreamTotal | currency}}</h3>
       </mat-card-content>
     </mat-card>
@@ -18,6 +19,7 @@
       </mat-card-subtitle>
       <mat-card-content>
         <line-item *ngFor="let expense of expenses" [form]="expense"></line-item>
+        <line-item [disabled]="true" (click)="addExpense()"></line-item>
         <h3 class="total">Total: {{expenseTotal | currency}}</h3>
       </mat-card-content>
     </mat-card>

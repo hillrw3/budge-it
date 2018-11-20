@@ -22,15 +22,15 @@ export class AppComponent implements OnInit {
     })
   }
 
-  get revenueStreamTotal(): number {
-    return this.totalLineItemAmounts(this.revenueStreams)
-  }
+  get revenueStreamTotal(): number { return this.totalLineItemAmounts(this.revenueStreams) }
 
-  get expenseTotal(): number {
-    return this.totalLineItemAmounts(this.expenses)
-  }
+  get expenseTotal(): number { return this.totalLineItemAmounts(this.expenses) }
 
   get netIncome() { return this.revenueStreamTotal - this.expenseTotal }
+
+  addRevenueStream() { this.revenueStreams.push(this.lineItemToFormGroup(LineItem.fromJson())) }
+
+  addExpense() { this.expenses.push(this.lineItemToFormGroup(LineItem.fromJson())) }
 
   private buildForm(budget: Budget) {
     this.revenueStreams = budget.revenueStreams.map(lineItem => this.lineItemToFormGroup(lineItem))
